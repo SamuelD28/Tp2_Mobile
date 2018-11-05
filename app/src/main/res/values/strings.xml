@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TP2_TasksApp</string>
+    <string name="date_task_titre">Date de la tâche</string>
 </resources>
