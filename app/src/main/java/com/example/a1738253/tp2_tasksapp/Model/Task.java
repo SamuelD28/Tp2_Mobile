@@ -1,10 +1,10 @@
-package com.example.a1738253.tp2_tasksapp;
+package com.example.a1738253.tp2_tasksapp.Model;
 
 import java.util.Date;
 import java.util.UUID;
 
 
-//type spinner
+//type spinner ok
 //statut seek
 //notification radio
 //archiver switch

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">TP2_TasksApp</string>
     <string name="date_task_titre">Date de la tâche</string>
+    <string name="le_jour">Le jour même</string>
+    <string name="un_jour">Un jour avant</string>
+    <string name="deux_jours">Deux jours avant</string>
+    <string name="trois_jours">Trois jours avant</string>
+    <string name="une_semaine">Une semaine avant</string>
 </resources>
