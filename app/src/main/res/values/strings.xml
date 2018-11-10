@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TP2_TasksApp</string>
+    <string name="app_name">To Do</string>
     <string name="date_task_titre">Date de la tâche</string>
     <string name="le_jour">Le jour même</string>
     <string name="un_jour">Un jour avant</string>
