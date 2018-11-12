@@ -10,25 +10,32 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Titre"/>
+        android:text="@string/nouvelle_tache"/>
 
     <EditText
         android:id="@+id/task_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nouvelle tâche"/>
+        android:hint="@string/titre_tache"/>
 
     <EditText
         android:id="@+id/task_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description" />
+        android:hint="@string/description_tache" />
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Type"/>
+        android:text="@string/type_tache"/>
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        />
 
     <Spinner
         android:id="@+id/spinner"
@@ -40,7 +47,7 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Statut"/>
+        android:text="@string/statut_tache"/>
 
     <SeekBar
         android:id="@+id/simpleSeekBar"
@@ -90,18 +97,18 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Détails"/>
+        android:text="@string/details_tache"/>
 
     <Button
         android:id="@+id/task_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date"/>
+        android:text="@string/date_tache"/>
 
     <Switch
         android:id="@+id/simpleSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Archiver "/>
+        android:text="@string/archiver_tache"/>
 
 </LinearLayout>

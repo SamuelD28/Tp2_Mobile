@@ -1,5 +1,7 @@
 package com.example.a1738253.tp2_tasksapp;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -33,7 +35,8 @@ public class TaskActivity extends AppCompatActivity {
         mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int i) {
-                return null;
+                Task task = mTasks.get(i);
+                return TaskFragment.newInstance(task.getId());
             }
 
             @Override
@@ -42,5 +45,20 @@ public class TaskActivity extends AppCompatActivity {
             }
         });
 
+        for (int i=0; i < mTasks.size(); ++i){
+            if (mTasks.get(i).equals(taskID)){
+                mViewPager.setCurrentItem(i);
+                break;;
+            }
+        }
+
+
+
+    }
+    public  static Intent newIntent(Context context, UUID task_id) {
+
+        Intent intent =  new Intent(context, TaskActivity.class);
+        intent.putExtra(EXTRA_TASK_ID, task_id);
+        return  intent;
     }
 }
