@@ -1,6 +1,7 @@
 package com.example.a1738253.tp2_tasksapp.Fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,15 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import com.example.a1738253.tp2_tasksapp.Listener.RecyclerItemClickListener;
+import com.example.a1738253.tp2_tasksapp.Activity.TaskDetailActivity;
+import com.example.a1738253.tp2_tasksapp.Adapter.RecyclerItemClickListener;
+import com.example.a1738253.tp2_tasksapp.Adapter.TaskRecyclerViewAdapter;
 import com.example.a1738253.tp2_tasksapp.Model.Task;
 import com.example.a1738253.tp2_tasksapp.R;
+import java.io.Serializable;
 import java.util.ArrayList;
+import static com.example.a1738253.tp2_tasksapp.Activity.MainActivity.TASK_TRANSFER;
 
 public class HomeFragment extends Fragment implements RecyclerItemClickListener.OnRecyclerClickListener{
 
     private ArrayList<Task> mTaskList = new ArrayList<>();
     private RecyclerView mTaskRecyclerView;
+    private TaskRecyclerViewAdapter mTaskRecyclerViewAdapter;
     private ImageButton mBtnAddTaks;
 
     @Override
@@ -32,8 +38,8 @@ public class HomeFragment extends Fragment implements RecyclerItemClickListener.
         //Set the event listener when a item in the recycler view is taped
         mTaskRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), mTaskRecyclerView, this));
         //Set the adapater for the recycler view
-        TaskRecyclerViewAdapter taskRecyclerViewAdapter = new TaskRecyclerViewAdapter(mTaskList, getContext()); //Might need to access context from activity
-        mTaskRecyclerView.setAdapter(taskRecyclerViewAdapter);
+        mTaskRecyclerViewAdapter = new TaskRecyclerViewAdapter(mTaskList, getContext()); //Might need to access context from activity
+        mTaskRecyclerView.setAdapter(mTaskRecyclerViewAdapter);
 
         mBtnAddTaks = view.findViewById(R.id.BtnAddTask);
         return view;
@@ -53,10 +59,9 @@ public class HomeFragment extends Fragment implements RecyclerItemClickListener.
     @Override
     public void onItemClick(View view, int position) {
         Toast.makeText(getContext(), "Task Tap Position : " + String.valueOf(position), Toast.LENGTH_SHORT).show();
-
-//        Intent intent = new Intent(this, PhotoDetailActivity.class);
-//        intent.putExtra(PHOTO_TRANSFER, mFlickrRecyclerViewAdapter.getPhoto(position));
-//        startActivity(intent);
+        Intent intent = new Intent(getContext(), TaskDetailActivity.class);
+        intent.putExtra(TASK_TRANSFER, mTaskRecyclerViewAdapter.GetTask(position));
+        startActivity(intent);
     }
 
     @Override

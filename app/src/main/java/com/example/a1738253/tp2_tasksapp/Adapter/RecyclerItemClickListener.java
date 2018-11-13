@@ -1,4 +1,4 @@
-package com.example.a1738253.tp2_tasksapp.Listener;
+package com.example.a1738253.tp2_tasksapp.Adapter;
 import android.content.Context;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.widget.RecyclerView;

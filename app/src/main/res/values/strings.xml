@@ -13,6 +13,7 @@
     <string name="deux_jours">Deux jours avant</string>
     <string name="trois_jours">Trois jours avant</string>
     <string name="une_semaine">Une semaine avant</string>
+    <string name="TASK_TRANSFER">TASKTRANSFER</string>
 
     <string-array name="types">
         <item>École</item>

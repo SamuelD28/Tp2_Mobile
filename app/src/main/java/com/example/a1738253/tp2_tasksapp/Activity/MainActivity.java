@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String  TASK_TRANSFER = "TASK_TRANSFER";
+
     private ArrayList<Task> TaskList = new ArrayList<>();
     private FragmentManager FragManager;
 

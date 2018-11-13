@@ -1,5 +1,6 @@
 package com.example.a1738253.tp2_tasksapp.Model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
@@ -9,7 +10,7 @@ import java.util.UUID;
 //notification radio
 //archiver switch
 
-public class Task {
+public class Task implements Serializable {
 
     public  enum Type {ECOLE, TRAVAIL, PERSONNEL, AUTRE}
     public enum Statut {PASSIF, NORMAL, URGENT}
@@ -95,5 +96,22 @@ public class Task {
 
     public void setDate(Date date) {
         mDate = date;
+    }
+
+    /** Method used for parsing the model as an intend between Activity
+     * @return Return the parsed data
+     */
+    @Override
+    public String toString() {
+        return "Task{" +
+                "mId='" + mId + '\'' +
+                "mTitre='" + mTitre + '\'' +
+                ", mDescription='" + mDescription + '\'' +
+                ", mType='" + mType + '\'' +
+                ", mDate='" + mDate + '\'' +
+                ", mStatut='" + mStatut + '\'' +
+                ", mArchive='" + mArchive + '\'' +
+                ", mNotification='" + mNotification + '\'' +
+                '}';
     }
 }

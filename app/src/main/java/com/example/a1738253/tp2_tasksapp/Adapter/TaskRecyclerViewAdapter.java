@@ -1,4 +1,4 @@
-package com.example.a1738253.tp2_tasksapp.Fragment;
+package com.example.a1738253.tp2_tasksapp.Adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ import com.example.a1738253.tp2_tasksapp.Model.Task;
 import com.example.a1738253.tp2_tasksapp.R;
 import java.util.List;
 
-class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerViewAdapter.TaskViewHolder>{
+public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerViewAdapter.TaskViewHolder>{
     private List<Task> mTaskListe;
     private Context mContext;
 
