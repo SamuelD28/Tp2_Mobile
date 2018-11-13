@@ -1,4 +1,4 @@
-package com.example.a1738253.tp2_tasksapp;
+package com.example.a1738253.tp2_tasksapp.Activity;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.a1738253.tp2_tasksapp.Fragment.HomeFragment;
 import com.example.a1738253.tp2_tasksapp.Model.Task;
+import com.example.a1738253.tp2_tasksapp.R;
 
 import java.util.ArrayList;
 

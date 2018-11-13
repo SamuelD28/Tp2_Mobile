@@ -1,4 +1,4 @@
-package com.example.a1738253.tp2_tasksapp.Fragment;
+package com.example.a1738253.tp2_tasksapp.Activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

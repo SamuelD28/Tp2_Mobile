@@ -1,4 +1,4 @@
-package com.example.a1738253.tp2_tasksapp;
+package com.example.a1738253.tp2_tasksapp.Activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,9 +8,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.a1738253.tp2_tasksapp.Fragment.TaskFragment;
+import com.example.a1738253.tp2_tasksapp.Fragment.TaskCreateFragment;
 import com.example.a1738253.tp2_tasksapp.Model.Task;
 import com.example.a1738253.tp2_tasksapp.Model.TaskLog;
+import com.example.a1738253.tp2_tasksapp.R;
 
 import java.util.List;
 import java.util.UUID;
@@ -37,7 +38,7 @@ public class TaskActivity extends AppCompatActivity {
             @Override
             public Fragment getItem(int i) {
                 Task task = mTasks.get(i);
-                return TaskFragment.newInstance(task.getId());
+                return TaskCreateFragment.newInstance(task.getId());
             }
 
             @Override
