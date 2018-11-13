@@ -6,16 +6,15 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/Carte"
+        android:id="@+id/Task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_carte_ongoing"
-        android:gravity="left"
         android:orientation="vertical"
         android:padding="12dp">
 
         <TextView
-            android:id="@+id/CarteCategory"
+            android:id="@+id/TaskCategorie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Personnel"
@@ -23,14 +22,14 @@
             android:textColor="@color/colorPrimaryDark" />
 
         <TextView
-            android:id="@+id/CarteTitle"
-            android:layout_width="match_parent"
+            android:id="@+id/TaskTitre"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="Aller à L'épicerie"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
-            android:textSize="24sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/CarteDate"
@@ -50,7 +49,7 @@
                 app:srcCompat="@drawable/ic_icon_date" />
 
             <TextView
-                android:id="@+id/Date"
+                android:id="@+id/TaskDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="2dp"

@@ -1,4 +1,4 @@
-package com.example.a1738253.tp2_tasksapp;
+package com.example.a1738253.tp2_tasksapp.Fragment;
 
 
 import android.app.Activity;
@@ -12,6 +12,8 @@ import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
+
+import com.example.a1738253.tp2_tasksapp.R;
 
 import java.util.Calendar;
 import java.util.Date;

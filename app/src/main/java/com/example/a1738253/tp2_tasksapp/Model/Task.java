@@ -24,10 +24,12 @@ public class Task {
     private boolean mArchive;
     private Notification mNotification;
 
-    public Task()
+    public Task(String pTitre, Type pType)
     {
         mId = UUID.randomUUID();
         mDate = new Date();
+        mTitre = pTitre;
+        mType = pType;
     }
 
     public void setStatut(Statut statut) {
@@ -74,7 +76,6 @@ public class Task {
     public Date getDate() {
         return mDate;
     }
-
 
     public void setId(UUID id) {
         mId = id;

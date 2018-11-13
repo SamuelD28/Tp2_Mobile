@@ -1,9 +1,11 @@
-package com.example.a1738253.tp2_tasksapp;
+package com.example.a1738253.tp2_tasksapp.Fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.a1738253.tp2_tasksapp.R;
 
 public abstract class SingleFragementActivity extends AppCompatActivity {
 

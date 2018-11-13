@@ -1,4 +1,4 @@
-package com.example.a1738253.tp2_tasksapp;
+package com.example.a1738253.tp2_tasksapp.Fragment;
 
 import android.support.v4.app.Fragment;
 import android.widget.Button;

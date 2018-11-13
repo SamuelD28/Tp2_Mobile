@@ -21,7 +21,7 @@
 
         <fragment
             android:id="@+id/fragment16"
-            android:name="com.example.a1738253.tp2_tasksapp.home_fragment"
+            android:name="com.example.a1738253.tp2_tasksapp.Fragment.HomeFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>
