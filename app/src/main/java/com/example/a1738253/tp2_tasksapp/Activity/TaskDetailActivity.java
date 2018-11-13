@@ -19,14 +19,14 @@ public class TaskDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_task_detail);
 
-        mTitle = findViewById(R.id.task_detail_title);
-
-        Intent intent = getIntent();
-        Task task = (Task) intent.getSerializableExtra(TASK_TRANSFER);
-
-        if(task != null)
-        {
-            mTitle.setText(task.getTitre());
-        }
+//        mTitle = findViewById(R.id.task_detail_title);
+//
+//        Intent intent = getIntent();
+//        Task task = (Task) intent.getSerializableExtra(TASK_TRANSFER);
+//
+//        if(task != null)
+//        {
+//            mTitle.setText(task.getTitre());
+//        }
     }
 }

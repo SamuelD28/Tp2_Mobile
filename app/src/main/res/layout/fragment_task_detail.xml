@@ -7,25 +7,303 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/task_detail_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/raleway_medium"
+            android:text="Détails"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/task_detail_closeBtn"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_closebutton" />
+
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="368dp"
-        android:layout_height="551dp"
+        android:layout_height="468dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-        <TextView
-            android:id="@+id/task_detail_title"
+        <LinearLayout
+            android:id="@+id/task_detail_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-    </LinearLayout>
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/task_detail_statusContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/task_detail_statusLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:drawableEnd="@draw"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="Status" />
+
+                    <SeekBar
+                        android:id="@+id/task_detail_statusInput"
+                        style="@android:style/Widget.DeviceDefault.Light.SeekBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/task_detail_archiveContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="30dp"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/task_detail_archiveLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:drawableEnd="@draw"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="Archiver" />
+
+                    <Switch
+                        android:id="@+id/task_detail_archiveInput"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:checked="false"
+                        android:showText="false"
+                        android:splitTrack="false"
+                        tools:checked="false" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_detail_tiltleContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/task_detail_titleLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="Titre" />
+
+                <EditText
+                    android:id="@+id/task_detail_titleInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_inputborder"
+                    android:ems="10"
+                    android:fontFamily="@font/raleway_thin"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="8dp"
+                    android:text="Aller à l'épicerie"
+                    android:textColor="@color/GreyDark"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_detail_descContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/task_detail_descTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="Description" />
+
+                <EditText
+                    android:id="@+id/task_detail_descInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/ic_textarea_border"
+                    android:fontFamily="@font/raleway_thin"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="8dp"
+                    android:singleLine="false"
+                    android:text="Descriptions..."
+                    android:textColor="@color/GreyDark"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/task_detail_categorieContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/task_detail_categorieLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="Catégorie" />
+
+                    <Spinner
+                        android:id="@+id/task_detail_categorieInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_spinner_border"
+                        android:entries="@array/types" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/task_detail_dateContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/task_detail_dateLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="Date" />
+
+                    <Button
+                        android:id="@+id/task_detail_dateInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_date_border"
+                        android:fontFamily="sans-serif"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:text="2018-02-12"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/GreyDark"
+                        android:textSize="11sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_detail_notifContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/task_detail_notifLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:drawableEnd="@draw"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="Notification" />
+
+                <RadioButton
+                    android:id="@+id/task_detail_notifInput1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/raleway_thin"
+                    android:text="La journée même"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/GreyDark"
+                    android:textSize="11sp" />
+
+                <RadioButton
+                    android:id="@+id/task_detail_notifInput2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/raleway_thin"
+                    android:text="Une journée avant"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/GreyDark"
+                    android:textSize="11sp" />
+
+                <RadioButton
+                    android:id="@+id/task_detail_notifInput3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:fontFamily="@font/raleway_thin"
+                    android:text="Une semaine avant"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/GreyDark"
+                    android:textSize="11sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/task_detail_saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/raleway_bold"
+                android:text="Sauvegarder"
+                android:textColor="@android:color/background_light" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

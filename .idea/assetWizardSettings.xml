@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_icon_date" />
-                            <entry key="sourceFile" value="C:\Users\windows\StudioProjects\ToDo_Tp2\app\src\main\assets\icon_date.svg" />
+                            <entry key="outputName" value="ic_radio_border" />
+                            <entry key="sourceFile" value="C:\Users\windows\StudioProjects\ToDo_Tp2\app\src\main\assets\radio_border.svg" />
                           </map>
                         </option>
                       </PersistentState>

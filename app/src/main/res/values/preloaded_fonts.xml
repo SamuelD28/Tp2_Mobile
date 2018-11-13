@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/actor</item>
+        <item>@font/raleway_bold</item>
+        <item>@font/raleway_medium</item>
         <item>@font/raleway_thin</item>
+        <item>@font/roboto_medium</item>
         <item>@font/roboto_thin</item>
+        <item>@font/yanone_kaffeesatz</item>
     </array>
 </resources>
