@@ -44,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
         TaskList.add(taskFour);
         TaskList.add(taskFive);
         TaskList.add(taskSix);
+        TaskList.add(taskOne);
+        TaskList.add(taskTwo);
+        TaskList.add(taskThree);
+        TaskList.add(taskFour);
+        TaskList.add(taskFive);
+        TaskList.add(taskSix);
     }
 
     private void InsertHomeFragment()

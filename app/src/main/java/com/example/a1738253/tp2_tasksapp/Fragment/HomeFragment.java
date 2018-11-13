@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment implements RecyclerItemClickListener.
         //Set the layout manager for the layout view
         mTaskRecyclerView.setLayoutManager(new LinearLayoutManager(getContext())); //Might need to acess context from activity
 
-        mTaskRecyclerView.setHasFixedSize(true);
 
         //Set the event listener when a item in the recycler view is taped
         mTaskRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), mTaskRecyclerView, this));
