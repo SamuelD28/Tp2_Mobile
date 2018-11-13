@@ -1,7 +1,6 @@
 package com.example.a1738253.tp2_tasksapp.Fragment;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +23,7 @@ public class HomeFragment extends Fragment implements RecyclerItemClickListener.
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        View view =  inflater.inflate(R.layout.home_fragment, container, false);
+        View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
         //Initialise the recycler view
         mTaskRecyclerView = view.findViewById(R.id.TaskRecyclerView);

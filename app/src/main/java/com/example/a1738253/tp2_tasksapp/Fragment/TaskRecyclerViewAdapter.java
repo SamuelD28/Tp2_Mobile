@@ -23,7 +23,7 @@ class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerViewAdapt
     @NonNull
     @Override
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_card_fragment, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_task_card, parent, false);
         return new TaskViewHolder(view);
     }
 

@@ -52,9 +52,6 @@ public class TaskActivity extends AppCompatActivity {
                 break;
             }
         }
-
-
-
     }
     public  static Intent newIntent(Context context, UUID task_id) {
 

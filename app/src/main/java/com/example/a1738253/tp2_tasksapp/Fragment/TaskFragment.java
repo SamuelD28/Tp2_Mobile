@@ -32,7 +32,7 @@ public class TaskFragment extends Fragment{
 
     private static final int REQUEST_DATE = 0;
 
-    private ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.new_task_fragment, elements);
+    private ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.fragment_task_create, elements);
 
     private Task mTask;
     private EditText mTitre;
@@ -58,7 +58,7 @@ public class TaskFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.new_task_fragment, container, false);
+        View v = inflater.inflate(R.layout.fragment_task_create, container, false);
 
         mTitre = (EditText) v.findViewById(R.id.task_title);
         mTitre.setText(mTask.getTitre());
