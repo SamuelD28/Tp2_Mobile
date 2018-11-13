@@ -33,7 +33,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@color/colorPrimary"
-            android:contentDescription="calendar @android:string/fingerprint_icon_content_description"
+            android:contentDescription="@string/btn_calendar"
             android:src="@drawable/icon_calendrier" />
 
         <ImageButton
@@ -43,7 +43,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@color/colorPrimary"
-            android:contentDescription="clock icon"
+            android:contentDescription="@string/btn_clock"
             android:src="@drawable/icon_clock" />
 
         <ImageButton
@@ -53,7 +53,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@color/colorPrimary"
-            android:contentDescription="checkmark icon"
+            android:contentDescription="@string/btn_done"
             android:src="@drawable/icon_checkmark" />
 
     </LinearLayout>

@@ -1,19 +1,33 @@
 <resources>
     <string name="app_name">To Do</string>
-    <string name="nouvelle_tache">Nouvelle tâche</string>
-    <string name="titre_tache">Titre</string>
-    <string name="description_tache">Description</string>
-    <string name="type_tache">Type</string>
-    <string name="statut_tache">Statut</string>
-    <string name="details_tache">Détails</string>
-    <string name="date_tache">Date</string>
-    <string name="archiver_tache">Archiver</string>
-    <string name="le_jour">Le jour même</string>
-    <string name="un_jour">Un jour avant</string>
-    <string name="deux_jours">Deux jours avant</string>
-    <string name="trois_jours">Trois jours avant</string>
-    <string name="une_semaine">Une semaine avant</string>
-    <string name="TASK_TRANSFER">TASKTRANSFER</string>
+    <string name="task_tittle_label">Titre</string>
+    <string name="task_tittle_placeholder">Titre…</string>
+    <string name="task_desc_placeholder">Description…</string>
+    <string name="task_desc_label">Description</string>
+    <string name="task_status_label">Status</string>
+    <string name="task_archive_label">Archiver</string>
+    <string name="task_date_label">Date</string>
+    <string name="task_date_input">aaaa-mm-jj</string>
+    <string name="task_categorie_label">Catégorie</string>
+    <string name="task_notif_label">Notification</string>
+    <string name="task_notif_daybefore">Une journée avant</string>
+    <string name="task_notif_weekbefore">Une semaine avant</string>
+    <string name="task_notif_sameday">La journée même</string>
+    <string name="task_notif_none">Aucune notification</string>
+    <string name="task_add">Ajouter</string>
+    <string name="task_save">Sauvegarder</string>
+    <string name="task_delete">Supprimer</string>
+
+    <string name="close_btn_desc">Close Button</string>
+    <string name="add_btn_desc">Add Button</string>
+
+    <string name="btn_calendar">All the task</string>
+    <string name="btn_clock">Task on going</string>
+    <string name="btn_done">Task done</string>
+
+    <string name="task_detail_header">Détails</string>
+    <string name="task_create_header">Ajouter</string>
+    <string name="task_home_header">Vos Cartes</string>
 
     <string-array name="types">
         <item>École</item>

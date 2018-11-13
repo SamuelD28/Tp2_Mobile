@@ -21,11 +21,11 @@
 
         <TextView
             android:id="@+id/task_detail_header"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/raleway_thin"
-            android:text="Détails"
+            android:text="@string/task_detail_header"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
             android:textSize="26sp"
@@ -35,10 +35,11 @@
             android:id="@+id/task_detail_closeBtn"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:adjustViewBounds="true"
+            android:adjustViewBounds="false"
             android:backgroundTint="@android:color/transparent"
-            android:cropToPadding="true"
-            android:scaleType="centerCrop"
+            android:contentDescription="@string/close_btn_desc"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
             android:src="@drawable/button_close" />
 
     </LinearLayout>
@@ -61,6 +62,7 @@
             android:id="@+id/task_detail_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -70,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -85,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
                         android:fontFamily="@font/raleway_medium"
-                        android:text="Status" />
+                        android:text="@string/task_status_label" />
 
                     <SeekBar
                         android:id="@+id/task_detail_statusInput"
@@ -98,9 +101,10 @@
                     android:id="@+id/task_detail_archiveContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:layout_weight=".5"
-                    android:gravity="right"
+                    android:baselineAligned="false"
+                    android:gravity="end"
                     android:orientation="vertical">
 
                     <TextView
@@ -109,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
                         android:fontFamily="@font/raleway_medium"
-                        android:text="Archiver"
+                        android:text="@string/task_archive_label"
                         android:textAlignment="textEnd" />
 
                     <Switch
@@ -136,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:fontFamily="@font/raleway_medium"
-                    android:text="Titre" />
+                    android:text="@string/task_tittle_label" />
 
                 <EditText
                     android:id="@+id/task_detail_titleInput"
@@ -150,9 +154,9 @@
                     android:paddingTop="8dp"
                     android:paddingRight="4dp"
                     android:paddingBottom="8dp"
-                    android:text="Aller à l'épicerie"
+                    android:text="@string/task_tittle_placeholder"
                     android:textColor="@color/GreyDark"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -168,7 +172,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:fontFamily="@font/raleway_medium"
-                    android:text="Description" />
+                    android:text="@string/task_desc_label" />
 
                 <EditText
                     android:id="@+id/task_detail_descInput"
@@ -183,22 +187,23 @@
                     android:paddingRight="4dp"
                     android:paddingBottom="8dp"
                     android:singleLine="false"
-                    android:text="Descriptions..."
+                    android:text="@string/task_desc_placeholder"
                     android:textColor="@color/GreyDark"
-                    android:textSize="11sp" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:id="@+id/task_detail_categorieContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight=".5"
                     android:orientation="vertical">
 
@@ -208,7 +213,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
                         android:fontFamily="@font/raleway_medium"
-                        android:text="Catégorie" />
+                        android:text="@string/task_categorie_label" />
 
                     <Spinner
                         android:id="@+id/task_detail_categorieInput"
@@ -222,7 +227,7 @@
                     android:id="@+id/task_detail_dateContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginStart="20dp"
                     android:layout_weight=".5"
                     android:orientation="vertical">
 
@@ -232,7 +237,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
                         android:fontFamily="@font/raleway_medium"
-                        android:text="Date" />
+                        android:text="@string/task_date_label" />
 
                     <Button
                         android:id="@+id/task_detail_dateInput"
@@ -242,10 +247,10 @@
                         android:fontFamily="sans-serif"
                         android:paddingLeft="4dp"
                         android:paddingRight="4dp"
-                        android:text="2018-02-12"
+                        android:text="@string/task_date_input"
                         android:textAlignment="textStart"
                         android:textColor="@color/GreyDark"
-                        android:textSize="11sp" />
+                        android:textSize="12sp" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -263,7 +268,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:fontFamily="@font/raleway_medium"
-                    android:text="Notification" />
+                    android:text="@string/task_notif_label" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -275,10 +280,10 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:fontFamily="@font/raleway_thin"
-                        android:text="La journée même"
+                        android:text="@string/task_notif_sameday"
                         android:textAlignment="textStart"
                         android:textColor="@color/GreyDark"
-                        android:textSize="11sp" />
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/task_detail_notifInput2"
@@ -286,10 +291,10 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:fontFamily="@font/raleway_thin"
-                        android:text="Une journée avant"
+                        android:text="@string/task_notif_daybefore"
                         android:textAlignment="textStart"
                         android:textColor="@color/GreyDark"
-                        android:textSize="11sp" />
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/task_detail_notifInput3"
@@ -297,10 +302,10 @@
                         android:layout_height="wrap_content"
                         android:checked="false"
                         android:fontFamily="@font/raleway_thin"
-                        android:text="Une semaine avant"
+                        android:text="@string/task_notif_weekbefore"
                         android:textAlignment="textStart"
                         android:textColor="@color/GreyDark"
-                        android:textSize="11sp" />
+                        android:textSize="12sp" />
 
                     <RadioButton
                         android:id="@+id/task_detail_notifInput4"
@@ -309,10 +314,10 @@
                         android:layout_weight="1"
                         android:checked="false"
                         android:fontFamily="@font/raleway_thin"
-                        android:text="Aucune notification"
+                        android:text="@string/task_notif_none"
                         android:textAlignment="textStart"
                         android:textColor="@color/GreyDark"
-                        android:textSize="11sp" />
+                        android:textSize="12sp" />
                 </RadioGroup>
 
             </LinearLayout>
@@ -324,7 +329,7 @@
                 android:layout_marginBottom="20dp"
                 android:background="@color/colorPrimary"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Sauvegarder"
+                android:text="@string/task_save"
                 android:textColor="@android:color/background_light" />
 
         </LinearLayout>

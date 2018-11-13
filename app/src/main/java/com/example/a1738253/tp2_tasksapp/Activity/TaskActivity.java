@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.a1738253.tp2_tasksapp.Fragment.TaskCreateFragment;
 import com.example.a1738253.tp2_tasksapp.Model.Task;
 import com.example.a1738253.tp2_tasksapp.Model.TaskLog;
 import com.example.a1738253.tp2_tasksapp.R;
@@ -33,26 +32,27 @@ public class TaskActivity extends AppCompatActivity {
 
         mTasks = TaskLog.get().getTasks();
 
-        mViewPager = (ViewPager) findViewById(R.id.task_view_pager);
-        mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
-            @Override
-            public Fragment getItem(int i) {
-                Task task = mTasks.get(i);
-                return TaskCreateFragment.newInstance(task.getId());
-            }
-
-            @Override
-            public int getCount() {
-               return mTasks.size();
-            }
-        });
-
-        for (int i=0; i < mTasks.size(); ++i){
-            if (mTasks.get(i).equals(taskID)){
-                mViewPager.setCurrentItem(i);
-                break;
-            }
-        }
+//        mViewPager = (ViewPager) findViewById(R.id.task_view_pager);
+//
+//        mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+//            @Override
+//            public Fragment getItem(int i) {
+//                Task task = mTasks.get(i);
+//                return TaskCreateActivity.newInstance(task.getId());
+//            }
+//
+//            @Override
+//            public int getCount() {
+//               return mTasks.size();
+//            }
+//        });
+//
+//        for (int i=0; i < mTasks.size(); ++i){
+//            if (mTasks.get(i).equals(taskID)){
+//                mViewPager.setCurrentItem(i);
+//                break;
+//            }
+//        }
     }
     public  static Intent newIntent(Context context, UUID task_id) {
 

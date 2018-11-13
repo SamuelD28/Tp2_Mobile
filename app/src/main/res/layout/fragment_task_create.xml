@@ -1,114 +1,279 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/nouvelle_tache"/>
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/task_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/titre_tache"/>
-
-    <EditText
-        android:id="@+id/task_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/description_tache" />
-
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/type_tache"/>
-
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp" />
-
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/statut_tache"/>
-
-    <SeekBar
-        android:id="@+id/simpleSeekBar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification"/>
-
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:id="@+id/notification">
-        <RadioButton
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/task_create_header"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/le_jour"
-            android:onClick="onRadioButtonClicked"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/un_jour"
-            android:onClick="onRadioButtonClicked"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/deux_jours"
-            android:onClick="onRadioButtonClicked"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/trois_jours"
-            android:onClick="onRadioButtonClicked"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/une_semaine"
-            android:onClick="onRadioButtonClicked"/>
-    </RadioGroup>
+            android:layout_weight="1"
+            android:fontFamily="@font/raleway_thin"
+            android:text="@string/task_add"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="26sp"
+            android:textStyle="bold" />
 
+        <ImageButton
+            android:id="@+id/task_create_closeBtn"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:adjustViewBounds="false"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="@string/close_btn_desc"
+            android:cropToPadding="false"
+            android:scaleType="fitCenter"
+            android:src="@drawable/button_close" />
 
-    <TextView
-        style="?android:listSeparatorTextViewStyle"
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/details_tache"/>
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.0">
 
-    <Button
-        android:id="@+id/task_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/date_tache"/>
+        <LinearLayout
+            android:id="@+id/task_create_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
-    <Switch
-        android:id="@+id/simpleSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/archiver_tache"/>
+            <LinearLayout
+                android:id="@+id/task_create_tiltleContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
 
-</LinearLayout>
+                <TextView
+                    android:id="@+id/task_create_titleLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="@string/task_tittle_label" />
+
+                <EditText
+                    android:id="@+id/task_create_titleInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_textinput"
+                    android:ems="10"
+                    android:fontFamily="@font/raleway_thin"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/task_tittle_placeholder"
+                    android:textColor="@color/GreyDark"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_create_descContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/task_create_descTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="@string/task_desc_label" />
+
+                <EditText
+                    android:id="@+id/task_create_descInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/bg_textarea"
+                    android:fontFamily="@font/raleway_thin"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="8dp"
+                    android:singleLine="false"
+                    android:text="@string/task_desc_placeholder"
+                    android:textColor="@color/GreyDark"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/task_create_categorieContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/task_create_categorieLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="@string/task_categorie_label" />
+
+                    <Spinner
+                        android:id="@+id/task_create_categorieInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/bg_spinner"
+                        android:entries="@array/types" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/task_create_dateContaineri"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/task_create_dateLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="3dp"
+                        android:fontFamily="@font/raleway_medium"
+                        android:text="@string/task_date_label" />
+
+                    <Button
+                        android:id="@+id/task_create_dateInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@drawable/bg_date2"
+                        android:fontFamily="sans-serif"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
+                        android:text="@string/task_date_input"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/GreyDark"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/task_create_notifContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/task_create_notifLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:fontFamily="@font/raleway_medium"
+                    android:text="@string/task_notif_label" />
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/task_create_notifInput1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:fontFamily="@font/raleway_thin"
+                        android:text="@string/task_notif_sameday"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/GreyDark"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/task_create_notifInput2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:fontFamily="@font/raleway_thin"
+                        android:text="@string/task_notif_daybefore"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/GreyDark"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/task_create_notifInput3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:fontFamily="@font/raleway_thin"
+                        android:text="@string/task_notif_weekbefore"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/GreyDark"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/task_create_notifInput4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="false"
+                        android:fontFamily="@font/raleway_thin"
+                        android:text="@string/task_notif_none"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/GreyDark"
+                        android:textSize="12sp" />
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/task_create_addbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="@font/raleway_bold"
+                android:text="@string/task_add"
+                android:textColor="@android:color/background_light" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
