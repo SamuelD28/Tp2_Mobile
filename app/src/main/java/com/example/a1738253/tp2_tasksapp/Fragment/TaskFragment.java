@@ -20,6 +20,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.a1738253.tp2_tasksapp.Model.Task;
+import com.example.a1738253.tp2_tasksapp.R;
 
 import java.util.UUID;
 
@@ -31,7 +32,7 @@ public class TaskFragment extends Fragment{
 
     private static final int REQUEST_DATE = 0;
 
-    private ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.new_task_fragment, elements);
+    private ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), R.layout.new_task_fragment, elements);
 
     private Task mTask;
     private EditText mTitre;

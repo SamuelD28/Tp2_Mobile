@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.a1738253.tp2_tasksapp.Fragment.TaskFragment;
 import com.example.a1738253.tp2_tasksapp.Model.Task;
 import com.example.a1738253.tp2_tasksapp.Model.TaskLog;
 
@@ -48,7 +49,7 @@ public class TaskActivity extends AppCompatActivity {
         for (int i=0; i < mTasks.size(); ++i){
             if (mTasks.get(i).equals(taskID)){
                 mViewPager.setCurrentItem(i);
-                break;;
+                break;
             }
         }
 
