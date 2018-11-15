@@ -47,23 +47,17 @@ public class DatePickerFragment extends DialogFragment {
 
         @SuppressLint("InflateParams") View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_date, null);
 
-        mDatePicker = (DatePicker) v.findViewById(R.id.dialog_date_picker);
+        mDatePicker = v.findViewById(R.id.dialog_date_picker);
         mDatePicker.init(year,month,day,null);
 
         return new AlertDialog.Builder(getActivity()).setView(v)
                 .setTitle(R.string.app_name)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
-
-                        int year = mDatePicker.getYear();
-                        int month = mDatePicker.getMonth();
-                        int day  = mDatePicker.getDayOfMonth();
-
-                        GregorianCalendar gc = new GregorianCalendar(year, month, day);
-
-                        sendResult(Activity.RESULT_OK, gc.getTime());
-                    }
+                .setPositiveButton(android.R.string.ok, (dialog, i) -> {
+                    int year1 = mDatePicker.getYear();
+                    int month1 = mDatePicker.getMonth();
+                    int day1 = mDatePicker.getDayOfMonth();
+                    GregorianCalendar gc = new GregorianCalendar(year1, month1, day1);
+                    sendResult(Activity.RESULT_OK, gc.getTime());
                 })
                 .create();
     }

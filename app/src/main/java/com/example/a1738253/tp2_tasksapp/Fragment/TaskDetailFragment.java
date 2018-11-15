@@ -111,7 +111,6 @@ public class TaskDetailFragment extends Fragment{
             FragmentTransaction trans = getFragmentManager().beginTransaction();
             trans.replace(R.id.frame_home, new TaskListFragment());
             trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-            trans.addToBackStack(null);
             trans.commit();
         });
 
@@ -219,7 +218,6 @@ public class TaskDetailFragment extends Fragment{
         FragmentTransaction trans = getFragmentManager().beginTransaction();
         trans.replace(R.id.frame_home, new TaskListFragment());
         trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-        trans.addToBackStack(null);
         trans.commit();
     }
 }

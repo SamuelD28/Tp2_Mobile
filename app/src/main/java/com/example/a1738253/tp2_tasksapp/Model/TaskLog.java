@@ -89,11 +89,5 @@ public class TaskLog {
         mTaskList.add(taskFour);
         mTaskList.add(taskFive);
         mTaskList.add(taskSix);
-        mTaskList.add(taskOne);
-        mTaskList.add(taskTwo);
-        mTaskList.add(taskThree);
-        mTaskList.add(taskFour);
-        mTaskList.add(taskFive);
-        mTaskList.add(taskSix);
     }
 }
