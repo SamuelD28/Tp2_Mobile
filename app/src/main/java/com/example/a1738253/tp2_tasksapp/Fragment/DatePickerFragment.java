@@ -1,6 +1,7 @@
 package com.example.a1738253.tp2_tasksapp.Fragment;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -20,6 +21,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class DatePickerFragment extends DialogFragment {
+
     private static final String ARG_DATE = "date";
     public static final String EXTRA_DATE = "com.cstjean.1738253";
     private DatePicker mDatePicker;
@@ -27,10 +29,7 @@ public class DatePickerFragment extends DialogFragment {
     public  static DatePickerFragment newInstance(Date date){
         Bundle args = new Bundle();
         args.putSerializable(ARG_DATE, date);
-
-        DatePickerFragment fragment = new DatePickerFragment();
-
-        return  fragment;
+        return  new DatePickerFragment();
     }
 
     @NonNull
@@ -46,7 +45,7 @@ public class DatePickerFragment extends DialogFragment {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
 
-        View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_date, null);
+        @SuppressLint("InflateParams") View v = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_date, null);
 
         mDatePicker = (DatePicker) v.findViewById(R.id.dialog_date_picker);
         mDatePicker.init(year,month,day,null);
@@ -71,13 +70,10 @@ public class DatePickerFragment extends DialogFragment {
 
     private void sendResult(int resultCode, Date date)
     {
-        if (getTargetFragment() == null){
+        if (getTargetFragment() == null)
             return;
-        }
-
         Intent intent = new Intent();
         intent.putExtra(EXTRA_DATE, date);
-
         getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, intent);
     }
 }

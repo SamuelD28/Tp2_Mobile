@@ -4,9 +4,5 @@
     <color name="colorPrimaryDark">#4D00BC</color>
     <color name="colorAccent">#03DAC6</color>
     <color name="Crimson">#B00020</color>
-    <color name="GreenDark">#008265</color>
-    <color name="Orange">#FFC300</color>
     <color name="GreyDark">#757575</color>
-    <color name="Grey">#9C9C9C</color>
-    <color name="GreyLight">#D6D6D6</color>
 </resources>

@@ -26,7 +26,6 @@
     <string name="btn_done">Task done</string>
 
     <string name="task_detail_header">Détails</string>
-    <string name="task_create_header">Ajouter</string>
     <string name="task_home_header">Vos Tâches</string>
 
     <string-array name="types">

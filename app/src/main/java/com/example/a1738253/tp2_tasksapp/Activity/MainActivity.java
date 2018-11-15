@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
      * we declare it here
      */
     private class MainActivityPagerAdapter extends FragmentStatePagerAdapter {
-        private static final int NUM_PAGES = 3;     //Specifies the number of page we want in the view pager
+        private static final int NUM_PAGES = 1;     //Specifies the number of page we want in the view pager
         /** Consturctor method
          * @param fm Fragment manager that the class needs
          */
@@ -49,18 +49,11 @@ public class MainActivity extends AppCompatActivity {
          */
         @Override
         public Fragment getItem(int position) {
-            switch (position) {
-                case 0:
-                case 1:
-                case 2:
-                    return new HomeFragment();
-                default:
-                    return null;
-            }
+            return new HomeFragment();
         }
 
         /** Method that return the number of pages hold inside the view pager
-         * @return
+         * @return Number of pages
          */
         @Override
         public int getCount() {

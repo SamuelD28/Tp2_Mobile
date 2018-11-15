@@ -12,7 +12,7 @@ public class Task implements Serializable {
      *  the form manipulation.
      */
     public enum Type {
-        École(0),
+        Ecole(0),
         Travail(1),
         Personnel(2),
         Autre(3);
@@ -26,7 +26,7 @@ public class Task implements Serializable {
         }
 
         /** Getter to retrieve the value of Type enum
-         * @return
+         * @return Return value of type enum
          */
         public int getValue() {
             return value;
@@ -49,9 +49,9 @@ public class Task implements Serializable {
      * Contains information if the task on going, done, missed, etc...
      */
     public enum Statut {
-        NonComplété,
+        NonComplete,
         EnCours,
-        Complété,
+        Complete,
     }
 
 

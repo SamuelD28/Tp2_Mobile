@@ -1,5 +1,6 @@
 package com.example.a1738253.tp2_tasksapp.Fragment;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -11,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +38,7 @@ public class TaskCreateFragment extends Fragment {
     private Calendar mDate;
     private TaskLog mTaskLog;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_task_create, container, false);
@@ -86,7 +87,7 @@ public class TaskCreateFragment extends Fragment {
         String description = DescriptionInput.getText().toString();
         Task.Type type = Task.Type.valueOf(TypeInput.getSelectedItemPosition());
         boolean archive = false;
-        Task.Statut statut = Task.Statut.NonComplété;
+        Task.Statut statut = Task.Statut.NonComplete;
         Task.Notification notification;
         switch(NotificationInput.getCheckedRadioButtonId()){
             case R.id.task_detail_notifInput1: notification = Task.Notification.LeJour; break;

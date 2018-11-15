@@ -20,7 +20,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/task_detail_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -59,7 +58,6 @@
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
-            android:id="@+id/task_detail_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
@@ -76,7 +74,6 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/task_detail_statusContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight=".5"
@@ -99,7 +96,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/task_detail_archiveContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="30dp"
@@ -109,7 +105,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/task_detail_archiveLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
@@ -129,18 +124,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/task_detail_tiltleContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/task_detail_titleLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:fontFamily="@font/raleway_medium"
+                    android:labelFor="@id/task_detail_titleInput"
                     android:text="@string/task_tittle_label" />
 
                 <EditText
@@ -157,22 +151,23 @@
                     android:paddingBottom="8dp"
                     android:text="@string/task_tittle_placeholder"
                     android:textColor="@color/GreyDark"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:autofillHints=""
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/task_detail_descContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/task_detail_descTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:fontFamily="@font/raleway_medium"
+                    android:labelFor="@id/task_detail_descInput"
                     android:text="@string/task_desc_label" />
 
                 <EditText
@@ -190,7 +185,9 @@
                     android:singleLine="false"
                     android:text="@string/task_desc_placeholder"
                     android:textColor="@color/GreyDark"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:autofillHints=""
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
@@ -201,7 +198,6 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/task_detail_categorieContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="20dp"
@@ -209,7 +205,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/task_detail_categorieLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
@@ -225,7 +220,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/task_detail_dateContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"
@@ -233,7 +227,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/task_detail_dateLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
@@ -257,14 +250,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/task_detail_notifContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/task_detail_notifLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
@@ -338,7 +329,8 @@
                     android:background="@color/Crimson"
                     android:fontFamily="@font/raleway_bold"
                     android:text="@string/task_delete"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@android:color/background_light"
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/task_detail_saveBtn"
@@ -349,7 +341,8 @@
                     android:background="@color/colorPrimary"
                     android:fontFamily="@font/raleway_bold"
                     android:text="@string/task_save"
-                    android:textColor="@android:color/background_light" />
+                    android:textColor="@android:color/background_light"
+                    tools:ignore="ButtonStyle" />
             </LinearLayout>
 
         </LinearLayout>

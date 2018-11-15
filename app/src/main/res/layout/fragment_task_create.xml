@@ -20,7 +20,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/task_create_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -59,7 +58,6 @@
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
-            android:id="@+id/task_create_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
@@ -69,14 +67,12 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <LinearLayout
-                android:id="@+id/task_create_tiltleContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/task_create_titleLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
@@ -97,18 +93,18 @@
                     android:paddingRight="4dp"
                     android:paddingBottom="8dp"
                     android:textColor="@color/GreyDark"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:autofillHints=""
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/task_create_descContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/task_create_descTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
@@ -130,7 +126,9 @@
                     android:paddingBottom="8dp"
                     android:singleLine="false"
                     android:textColor="@color/GreyDark"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:autofillHints=""
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
@@ -141,7 +139,6 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/task_create_categorieContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginEnd="20dp"
@@ -149,7 +146,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/task_create_categorieLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
@@ -165,7 +161,6 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/task_create_dateContaineri"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="20dp"
@@ -173,7 +168,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/task_create_dateLabel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="3dp"
@@ -197,14 +191,12 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/task_create_notifContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="20dp"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/task_create_notifLabel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
@@ -217,7 +209,6 @@
                     android:layout_height="match_parent">
 
                     <RadioButton
-                        android:id="@+id/task_create_notifInput1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:checked="false"
@@ -228,7 +219,6 @@
                         android:textSize="12sp" />
 
                     <RadioButton
-                        android:id="@+id/task_create_notifInput2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:checked="false"
@@ -239,7 +229,6 @@
                         android:textSize="12sp" />
 
                     <RadioButton
-                        android:id="@+id/task_create_notifInput3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:checked="false"
@@ -250,7 +239,6 @@
                         android:textSize="12sp" />
 
                     <RadioButton
-                        android:id="@+id/task_create_notifInput4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

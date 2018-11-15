@@ -1,12 +1,12 @@
 package com.example.a1738253.tp2_tasksapp.Adapter;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.a1738253.tp2_tasksapp.Model.Task;
@@ -36,6 +36,7 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
         return new TaskViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
 
@@ -61,9 +62,9 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
 
             //We changed the background drawable based on the status of task.
             switch(task.getStatut()){
-                case NonComplété: holder.mTaskContainer.setBackgroundResource(R.drawable.bg_task_missed); break;
+                case NonComplete: holder.mTaskContainer.setBackgroundResource(R.drawable.bg_task_missed); break;
                 case EnCours: holder.mTaskContainer.setBackgroundResource(R.drawable.bg_task_ongoing); break;
-                case Complété: holder.mTaskContainer.setBackgroundResource(R.drawable.bg_task_done); break;
+                case Complete: holder.mTaskContainer.setBackgroundResource(R.drawable.bg_task_done); break;
             }
         }
     }
@@ -96,7 +97,7 @@ public class TaskRecyclerViewAdapter extends RecyclerView.Adapter<TaskRecyclerVi
         private LinearLayout mTaskContainer = null;
 
         /** Constructor for the ViewHolder. We select item from the view here.
-         * @param itemView
+         * @param itemView The created view
          */
         public TaskViewHolder(View itemView){
             super(itemView);

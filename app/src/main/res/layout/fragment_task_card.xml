@@ -16,7 +16,6 @@
             android:id="@+id/TaskCategorie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Personnel"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimaryDark" />
 
@@ -26,13 +25,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="Aller à L'épicerie"
             android:textAlignment="textStart"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
         <LinearLayout
-            android:id="@+id/CarteDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_date"
@@ -42,22 +39,21 @@
             android:paddingRight="4dp">
 
             <ImageView
-                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="14dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/icon_date" />
+                app:srcCompat="@drawable/icon_date"
+                android:contentDescription="@string/btn_clock" />
 
             <TextView
                 android:id="@+id/TaskDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
+                android:layout_marginStart="2dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/roboto_thin"
-                android:text="Dans 2 Jours"
                 android:textAllCaps="true"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>

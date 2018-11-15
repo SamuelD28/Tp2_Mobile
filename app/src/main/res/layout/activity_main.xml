@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Activity.TaskActivity">
+    android:layout_height="match_parent">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/activity_view_pager"
@@ -29,7 +27,6 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
-            android:id="@+id/btnCalendar"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -39,7 +36,6 @@
             android:src="@drawable/icon_calendrier" />
 
         <ImageButton
-            android:id="@+id/btnClock"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -49,7 +45,6 @@
             android:src="@drawable/icon_clock" />
 
         <ImageButton
-            android:id="@+id/btnDone"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"

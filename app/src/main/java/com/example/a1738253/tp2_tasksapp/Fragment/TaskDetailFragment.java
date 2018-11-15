@@ -1,5 +1,6 @@
 package com.example.a1738253.tp2_tasksapp.Fragment;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -46,6 +47,7 @@ public class TaskDetailFragment extends Fragment{
     private TaskLog mTaskLog;
     private Task mTask;
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_task_detail, container, false);
@@ -63,13 +65,13 @@ public class TaskDetailFragment extends Fragment{
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 switch(seekBar.getProgress()){
                     case 0:
-                        StatutLabel.setText(Task.Statut.NonComplété.toString());
+                        StatutLabel.setText(Task.Statut.NonComplete.toString());
                         break;
                     case 1:
                         StatutLabel.setText(Task.Statut.EnCours.toString());
                         break;
                     case 2:
-                        StatutLabel.setText(Task.Statut.Complété.toString());
+                        StatutLabel.setText(Task.Statut.Complete.toString());
                         break;
                 }
             }
@@ -83,9 +85,9 @@ public class TaskDetailFragment extends Fragment{
         StatutLabel = view.findViewById(R.id.task_detail_statusLabel);
         //Set the status bar to the right value
         switch(mTask.getStatut()){
-            case NonComplété: StatusInput.setProgress(0);break;
+            case NonComplete: StatusInput.setProgress(0);break;
             case EnCours: StatusInput.setProgress(1); break;
-            case Complété: StatusInput.setProgress(2); break;
+            case Complete: StatusInput.setProgress(2); break;
         }
 
         //Click listener for the datepicker
@@ -156,8 +158,8 @@ public class TaskDetailFragment extends Fragment{
         Task.Statut statut;
         switch(StatusInput.getProgress()){
             case 1: statut = Task.Statut.EnCours; break;
-            case 2: statut = Task.Statut.Complété; break;
-            default: statut = Task.Statut.NonComplété; break;
+            case 2: statut = Task.Statut.Complete; break;
+            default: statut = Task.Statut.NonComplete; break;
         }
 
         Task.Notification notification;

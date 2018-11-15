@@ -76,12 +76,12 @@ public class TaskLog {
     /** Dataseed method used to intialise the ArrayList with base data
      */
     private void DataSeed(){
-        Task taskOne = new Task("Aller à l'épicerie","Pas oublier qu'il faut aller a lepicerie sinon on vas mourrir de faim",Task.Type.Personnel, Calendar.getInstance(),Task.Statut.NonComplété, false,Task.Notification.LeJour);
-        Task taskTwo = new Task("Souper de fête William","Acheter un cadeau pour la fete a william",Task.Type.Travail, Calendar.getInstance(),Task.Statut.Complété, false,Task.Notification.JourAvant);
+        Task taskOne = new Task("Aller à l'épicerie","Pas oublier qu'il faut aller a lepicerie sinon on vas mourrir de faim",Task.Type.Personnel, Calendar.getInstance(),Task.Statut.NonComplete, false,Task.Notification.LeJour);
+        Task taskTwo = new Task("Souper de fête William","Acheter un cadeau pour la fete a william",Task.Type.Travail, Calendar.getInstance(),Task.Statut.Complete, false,Task.Notification.JourAvant);
         Task taskThree = new Task("Changement Huile Garage","Rendez-vous chez le garage pour aller faire changer mon huile",Task.Type.Autre, Calendar.getInstance(),Task.Statut.EnCours, false,Task.Notification.SemaineAvant);
-        Task taskFour = new Task("Gym Tricep/Bicep","Pas oublier qu'il faut aller a lepicerie sinon on vas mourrir de faim",Task.Type.Travail, Calendar.getInstance(),Task.Statut.Complété, false,Task.Notification.LeJour);
-        Task taskFive = new Task("Yoga Matinale","Pas oublier qu'il faut aller a lepicerie sinon on vas mourrir de faim",Task.Type.École, Calendar.getInstance(),Task.Statut.EnCours, false,Task.Notification.Aucune);
-        Task taskSix = new Task("Tp2 Développement Moile","Pas oublier qu'il faut aller a lepicerie sinon on vas mourrir de faim",Task.Type.École, Calendar.getInstance(),Task.Statut.EnCours, false,Task.Notification.SemaineAvant);
+        Task taskFour = new Task("Gym Tricep/Bicep","Pas oublier qu'il faut aller a lepicerie sinon on vas mourrir de faim",Task.Type.Travail, Calendar.getInstance(),Task.Statut.Complete, false,Task.Notification.LeJour);
+        Task taskFive = new Task("Yoga Matinale","Pas oublier qu'il faut aller a lepicerie sinon on vas mourrir de faim",Task.Type.Ecole, Calendar.getInstance(),Task.Statut.EnCours, false,Task.Notification.Aucune);
+        Task taskSix = new Task("Tp2 Développement Moile","Pas oublier qu'il faut aller a lepicerie sinon on vas mourrir de faim",Task.Type.Ecole, Calendar.getInstance(),Task.Statut.EnCours, false,Task.Notification.SemaineAvant);
 
         mTaskList.add(taskOne);
         mTaskList.add(taskTwo);
