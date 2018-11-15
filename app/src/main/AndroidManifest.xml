@@ -18,6 +18,7 @@
         <activity android:name=".Activity.TaskDetailActivity" />
         <activity android:name=".Activity.TaskCreateActivity" />
         <activity android:name=".Activity.TaskCreateActivity" />
+        <activity android:name=".Activity.HomeActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

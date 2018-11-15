@@ -2,8 +2,6 @@ package com.example.a1738253.tp2_tasksapp.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,11 +24,11 @@ public class TaskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_task_pager);
+        setContentView(R.layout.activity_main);
 
         UUID taskID = (UUID)getIntent().getSerializableExtra(TaskActivity.EXTRA_TASK_ID);
 
-        mTasks = TaskLog.get().getTasks();
+//        mTasks = TaskLog.get().getTasks();
 
 //        mViewPager = (ViewPager) findViewById(R.id.task_view_pager);
 //

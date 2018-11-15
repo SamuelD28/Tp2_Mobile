@@ -1,61 +1,78 @@
 package com.example.a1738253.tp2_tasksapp.Activity;
-
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.a1738253.tp2_tasksapp.Fragment.HomeFragment;
-import com.example.a1738253.tp2_tasksapp.Model.Task;
+import com.example.a1738253.tp2_tasksapp.Fragment.TaskCreateFragment;
+import com.example.a1738253.tp2_tasksapp.Fragment.TaskDetailFragment;
 import com.example.a1738253.tp2_tasksapp.R;
 
-import java.util.ArrayList;
-
+/** Main activity that gets launched when the application loads.
+ * This is where we initialise the view pager that will hold all our main fragment.
+ */
 public class MainActivity extends AppCompatActivity {
 
-    public static final String  TASK_TRANSFER = "TASK_TRANSFER";
-
-    private ArrayList<Task> TaskList = new ArrayList<>();
-    private FragmentManager FragManager;
-
+    private ViewPager mViewPager;               //Viewpager used to navigate trough the pages
+    private PagerAdapter mViewPagerAdapter;     //Used in combination with the view pager. The adapter handled the viewpager behavior
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FragManager = getFragmentManager();
-        TaskDataSeed();
-        InsertHomeFragment();
+
+        // Instantiate a ViewPager and a PagerAdapter.
+        mViewPager = findViewById(R.id.activity_view_pager);
+        mViewPagerAdapter = new MainActivityPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(mViewPagerAdapter);
     }
 
-    //Methode pour generer des fausse données
-    private void TaskDataSeed()
-    {
-        Task taskOne = new Task("Aller à l'épicerie", Task.Type.PERSONNEL);
-        Task taskTwo = new Task("Gym Bicep/Tricep", Task.Type.PERSONNEL);
-        Task taskThree = new Task("Travaux Structure de donnée", Task.Type.ECOLE);
-        Task taskFour = new Task("Souper Fête William", Task.Type.AUTRE);
-        Task taskFive = new Task("Changement Huile", Task.Type.AUTRE);
-        Task taskSix = new Task("Course Matinale", Task.Type.TRAVAIL);
+    /** Anonymous Child class that implement the fragment state adapter.
+     * Since we dont need to access this outside the class
+     * we declare it here
+     */
+    private class MainActivityPagerAdapter extends FragmentStatePagerAdapter {
+        private static final int NUM_PAGES = 3;     //Specifies the number of page we want in the view pager
+        /** Consturctor method
+         * @param fm Fragment manager that the class needs
+         */
+        public MainActivityPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
 
-        TaskList.add(taskOne);
-        TaskList.add(taskTwo);
-        TaskList.add(taskThree);
-        TaskList.add(taskFour);
-        TaskList.add(taskFive);
-        TaskList.add(taskSix);
-        TaskList.add(taskOne);
-        TaskList.add(taskTwo);
-        TaskList.add(taskThree);
-        TaskList.add(taskFour);
-        TaskList.add(taskFive);
-        TaskList.add(taskSix);
-    }
 
-    private void InsertHomeFragment()
-    {
-        HomeFragment homeFragment = new HomeFragment();
-        homeFragment.SetTaskList(TaskList);
-        FragManager.beginTransaction().add(R.id.FragmentContainer, homeFragment).commit();
+        /** Method that return the appropriate Fragment in the view pager navigation.
+         * @param position Position of the view pager.
+         * @return Fragment to be returned
+         */
+        @Override
+        public Fragment getItem(int position) {
+            Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            switch (position) {
+                case 0:
+                    return new HomeFragment();
+                case 1:
+                    return new TaskDetailFragment();
+                case 2:
+                    return new TaskCreateFragment();
+                default:
+                    return null;
+            }
+        }
+
+        /** Method that return the number of pages hold inside the view pager
+         * @return
+         */
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
     }
 }
+

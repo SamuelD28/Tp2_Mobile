@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_task_bg_done" />
-                            <entry key="sourceFile" value="C:\Users\windows\StudioProjects\ToDo_Tp2\app\src\main\assets\task_bg_done.svg" />
+                            <entry key="outputName" value="bg_task_missed" />
+                            <entry key="sourceFile" value="C:\Users\windows\StudioProjects\ToDo_Tp2\app\src\main\assets\Groupe 36.svg" />
                           </map>
                         </option>
                       </PersistentState>
