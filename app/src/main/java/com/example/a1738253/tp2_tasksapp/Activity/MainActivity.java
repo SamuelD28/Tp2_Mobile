@@ -7,11 +7,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
 
 import com.example.a1738253.tp2_tasksapp.Fragment.HomeFragment;
-import com.example.a1738253.tp2_tasksapp.Fragment.TaskCreateFragment;
-import com.example.a1738253.tp2_tasksapp.Fragment.TaskDetailFragment;
 import com.example.a1738253.tp2_tasksapp.R;
 
 /** Main activity that gets launched when the application loads.
@@ -46,21 +43,17 @@ public class MainActivity extends AppCompatActivity {
             super(fm);
         }
 
-
         /** Method that return the appropriate Fragment in the view pager navigation.
          * @param position Position of the view pager.
          * @return Fragment to be returned
          */
         @Override
         public Fragment getItem(int position) {
-            Toast.makeText(MainActivity.this, String.valueOf(position), Toast.LENGTH_SHORT).show();
             switch (position) {
                 case 0:
-                    return new HomeFragment();
                 case 1:
-                    return new TaskDetailFragment();
                 case 2:
-                    return new TaskCreateFragment();
+                    return new HomeFragment();
                 default:
                     return null;
             }

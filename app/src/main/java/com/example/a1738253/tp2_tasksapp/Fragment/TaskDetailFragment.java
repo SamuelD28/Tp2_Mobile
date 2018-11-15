@@ -29,43 +29,47 @@ import static com.example.a1738253.tp2_tasksapp.Utils.Validation.Entre;
 public class TaskDetailFragment extends Fragment{
 
     /**Properties for the class**/
-    private TextView mTitle;
-    private TextView mDescription;
-    private Spinner mType;
-    private SeekBar mStatut;
-    private TextView mStatutLabel;
-    private Switch mArchive;
-    private RadioGroup mNotification;
-    private ImageButton mCloseBtn;
-    private Button mSaveButton;
-    private TaskLog mTaskLog;
+    private TextView TitleInput;
+    private TextView DescriptionInput;
+    private Spinner TypeInput;
+    private SeekBar StatusInput;
+    private TextView StatutLabel;
+    private Switch ArchiveInput;
+    private RadioGroup NotificationInput;
+    private ImageButton CloseBtn;
+    private Button SaveBtn;
+    private Button DeleteBtn;
+    private DatePickerDialog DatePicker;
+    private Button OpenDatePickerBtn;
 
-    /**Properties used to manage the date*/
     private Calendar mDate;
-    private Button mPickDateBtn;
-    private DatePickerDialog mDatePicker;
-
-    //Task that will hold the details for displaying to the user
+    private TaskLog mTaskLog;
     private Task mTask;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_task_detail, container, false);
 
+        //We intialise the form with the data passed as an bundle argument to the fragment.
+        Bundle bundle = getArguments();
+        if(bundle == null)
+            throw new IllegalStateException("No Task was found");
+        else
+            mTask = (Task) bundle.getSerializable("TASK_DETAIL"); //Intialize the task property with the one passed in the bundle
 
-        mStatut = view.findViewById(R.id.task_detail_statusInput);
-        mStatut.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        StatusInput = view.findViewById(R.id.task_detail_statusInput);
+        StatusInput.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 switch(seekBar.getProgress()){
                     case 0:
-                        mStatutLabel.setText(Task.Statut.NonComplété.toString());
+                        StatutLabel.setText(Task.Statut.NonComplété.toString());
                         break;
                     case 1:
-                        mStatutLabel.setText(Task.Statut.EnCours.toString());
+                        StatutLabel.setText(Task.Statut.EnCours.toString());
                         break;
                     case 2:
-                        mStatutLabel.setText(Task.Statut.Complété.toString());
+                        StatutLabel.setText(Task.Statut.Complété.toString());
                         break;
                 }
             }
@@ -76,13 +80,31 @@ public class TaskDetailFragment extends Fragment{
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-        //Clicck listener for the datepicker
-        mPickDateBtn = view.findViewById(R.id.task_detail_dateInput);
-        mPickDateBtn.setOnClickListener(view1 -> mDatePicker.show());
+        StatutLabel = view.findViewById(R.id.task_detail_statusLabel);
+        //Set the status bar to the right value
+        switch(mTask.getStatut()){
+            case NonComplété: StatusInput.setProgress(0);break;
+            case EnCours: StatusInput.setProgress(1); break;
+            case Complété: StatusInput.setProgress(2); break;
+        }
+
+        //Click listener for the datepicker
+        OpenDatePickerBtn = view.findViewById(R.id.task_detail_dateInput);
+        OpenDatePickerBtn.setOnClickListener(view1 -> DatePicker.show());
+        mDate = mTask.getDate();
+        DatePicker = new DatePickerDialog(getContext(), (datePicker, i, i1, i2) -> {
+            mDate.set(i,i1,i2);
+            OpenDatePickerBtn.setText(mDate.get(Calendar.YEAR)+"-"+mDate.get(Calendar.MONTH)+"-"+mDate.get(Calendar.DAY_OF_MONTH));
+        }, mDate.get(Calendar.YEAR), mDate.get(Calendar.MONTH), mDate.get(Calendar.DAY_OF_MONTH));
+        int Year = mDate.get(Calendar.YEAR);
+        int Month = mDate.get(Calendar.MONTH);
+        int Day = mDate.get(Calendar.DAY_OF_MONTH);
+        OpenDatePickerBtn.setText(Year + "-" + Month + "-" + Day);
+
 
         //Click Listener for the close button
-        mCloseBtn = view.findViewById(R.id.task_detail_closeBtn);
-        mCloseBtn.setOnClickListener(view1 -> {
+        CloseBtn = view.findViewById(R.id.task_detail_closeBtn);
+        CloseBtn.setOnClickListener(view1 -> {
             CloseForm();
             FragmentTransaction trans = getFragmentManager().beginTransaction();
             trans.replace(R.id.frame_home, new TaskListFragment());
@@ -92,59 +114,33 @@ public class TaskDetailFragment extends Fragment{
         });
 
         //Click listener for the save button
-        mSaveButton = view.findViewById(R.id.task_detail_saveBtn);
-        mSaveButton.setOnClickListener(view12 -> SubmitForm());
+        SaveBtn = view.findViewById(R.id.task_detail_saveBtn);
+        SaveBtn.setOnClickListener(view12 -> SubmitForm());
+
+        DeleteBtn = view.findViewById(R.id.task_detail_deleteBtn);
+        DeleteBtn.setOnClickListener(view13 -> DeleteTask());
 
         //We select all the element from the view.
-        mTitle = view.findViewById(R.id.task_detail_titleInput);
-        mDescription = view.findViewById(R.id.task_detail_descInput);
-        mType = view.findViewById(R.id.task_detail_categorieInput);
-        mStatutLabel = view.findViewById(R.id.task_detail_statusLabel);
-        mArchive = view.findViewById(R.id.task_detail_archiveInput);
-        mNotification = view.findViewById(R.id.task_detail_notifRadio);
+        TitleInput = view.findViewById(R.id.task_detail_titleInput);
+        TitleInput.setText(mTask.getTitre());
 
-        //We intialise the form with the data passed as an bundle argument to the fragment.
-        Bundle bundle = getArguments();
-        if(bundle != null)
-            mTask = (Task) bundle.getSerializable("TASK_DETAIL"); //Intialize the task property with the one passed in the bundle
+        DescriptionInput = view.findViewById(R.id.task_detail_descInput);
+        DescriptionInput.setText(mTask.getDescription());
 
-        //We initialise all the form input with the task that was passed as a bundle to the fragment
-        if(mTask != null)
-        {
-            mTitle.setText(mTask.getTitre());
-            mDescription.setText(mTask.getDescription());
-            mType.setSelection(mTask.getType().getValue());
-            mArchive.setChecked(mTask.isArchive());
+        TypeInput = view.findViewById(R.id.task_detail_categorieInput);
+        TypeInput.setSelection(mTask.getType().getValue());
 
+        ArchiveInput = view.findViewById(R.id.task_detail_archiveInput);
+        ArchiveInput.setChecked(mTask.isArchive());
 
-
-            //Intialise the right radio button
-            switch (mTask.getNotification()){
-                case LeJour: mNotification.check(R.id.task_detail_notifInput1); break;
-                case JourAvant: mNotification.check(R.id.task_detail_notifInput2); break;
-                case SemaineAvant: mNotification.check(R.id.task_detail_notifInput3); break;
-                case Aucune: mNotification.check(R.id.task_detail_notifInput4); break;
-            }
-
-            //Set the status bar to the right value
-            switch(mTask.getStatut()){
-                case NonComplété: mStatut.setProgress(0);break;
-                case EnCours: mStatut.setProgress(1); break;
-                case Complété: mStatut.setProgress(2); break;
-            }
-
-            //Initialization of the date input
-            mDate = mTask.getDate();
-            mDatePicker = new DatePickerDialog(getContext(), (datePicker, i, i1, i2) -> {
-                mDate.set(i,i1,i2);
-                mPickDateBtn.setText(mDate.get(Calendar.YEAR)+"-"+mDate.get(Calendar.MONTH)+"-"+mDate.get(Calendar.DAY_OF_MONTH));
-            }, mDate.get(Calendar.YEAR), mDate.get(Calendar.MONTH), mDate.get(Calendar.DAY_OF_MONTH));
-            int Year = mDate.get(Calendar.YEAR);
-            int Month = mDate.get(Calendar.MONTH);
-            int Day = mDate.get(Calendar.DAY_OF_MONTH);
-            mPickDateBtn.setText(Year + "-" + Month + "-" + Day);
+        NotificationInput = view.findViewById(R.id.task_detail_notifRadio);
+        //Intialise the right radio button
+        switch (mTask.getNotification()){
+            case LeJour: NotificationInput.check(R.id.task_detail_notifInput1); break;
+            case JourAvant: NotificationInput.check(R.id.task_detail_notifInput2); break;
+            case SemaineAvant: NotificationInput.check(R.id.task_detail_notifInput3); break;
+            case Aucune: NotificationInput.check(R.id.task_detail_notifInput4); break;
         }
-
         return view;
     }
 
@@ -152,24 +148,20 @@ public class TaskDetailFragment extends Fragment{
      */
     public void SubmitForm()
     {
-        //Verification before submitting to make sure the task is not null, otherwise we cant submit the form.
-        if(mTask == null)
-            throw new NullPointerException();
-
-        String title = mTitle.getText().toString();
-        String description = mDescription.getText().toString();
-        Task.Type type = Task.Type.valueOf(mType.getSelectedItemPosition());
-        boolean archive = mArchive.isChecked();
-
+        String title = TitleInput.getText().toString();
+        String description = DescriptionInput.getText().toString();
+        Task.Type type = Task.Type.valueOf(TypeInput.getSelectedItemPosition());
+        boolean archive = ArchiveInput.isChecked();
 
         Task.Statut statut;
-        switch(mStatut.getProgress()){
+        switch(StatusInput.getProgress()){
             case 1: statut = Task.Statut.EnCours; break;
             case 2: statut = Task.Statut.Complété; break;
             default: statut = Task.Statut.NonComplété; break;
         }
+
         Task.Notification notification;
-        switch(mNotification.getCheckedRadioButtonId()){
+        switch(NotificationInput.getCheckedRadioButtonId()){
             case R.id.task_detail_notifInput1: notification = Task.Notification.LeJour; break;
             case R.id.task_detail_notifInput2: notification = Task.Notification.JourAvant; break;
             case R.id.task_detail_notifInput3: notification = Task.Notification.SemaineAvant; break;
@@ -177,16 +169,24 @@ public class TaskDetailFragment extends Fragment{
         }
 
         boolean estOk = true;
-        //Verification
+        String erreurMessage = "";
         Calendar today = Calendar.getInstance();
-        if(!Entre(title, 20,3))
+        if(!Entre(title, 40,3)){
+            erreurMessage = "Le titre doit être entre 3 et 40";
             estOk = false;
-        if(!Entre(description,150,10))
+        }
+        if(!Entre(description,150,10)){
+            erreurMessage = "La description doit être entre 10 et 150";
             estOk = false;
-        if(!(mDate.get(Calendar.DAY_OF_MONTH) == today.get(Calendar.DAY_OF_MONTH)) || mDate.after(today))
+        }
+        if(!mDate.after(today) && mDate.get(Calendar.DAY_OF_MONTH) != today.get(Calendar.DAY_OF_MONTH)){
+            erreurMessage = "La date ne doit pas être antérieur";
             estOk = false;
-        if(!(title.charAt(0) == Character.toUpperCase(title.charAt(0))))
+        }
+        if(!(title.charAt(0) == Character.toUpperCase(title.charAt(0)))){
+            erreurMessage = "La première lettre du tire doit être majuscule";
             estOk = false;
+        }
 
         if(estOk){
             mTaskLog = TaskLog.GetInstance();
@@ -196,9 +196,20 @@ public class TaskDetailFragment extends Fragment{
                 Toast.makeText(getContext(), "Modifications Enregistrées", Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(getContext(), "La verification à échoué", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), erreurMessage, Toast.LENGTH_SHORT).show();
         }
-            
+    }
+
+    private void DeleteTask()
+    {
+        mTaskLog = TaskLog.GetInstance();
+        
+        if(mTaskLog.DeleteTask(mTask.getId())){
+            CloseForm();
+            Toast.makeText(getContext(), "Suppresion effectuée", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getContext(), "Suppresion à échouè", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void CloseForm()

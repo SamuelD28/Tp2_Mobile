@@ -37,13 +37,15 @@ public class TaskListFragment extends Fragment implements RecyclerItemClickListe
         //Initialise the recycler view
         mTaskRecyclerView = view.findViewById(R.id.TaskRecyclerView);
         //Set the layout manager for the layout view
-        mTaskRecyclerView.setLayoutManager(new LinearLayoutManager(getContext())); //Might need to acess context from activity
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        mTaskRecyclerView.setLayoutManager(linearLayoutManager); //Might need to acess context from activity
         //Set the event listener when a item in the recycler view is taped
         mTaskRecyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), mTaskRecyclerView, this));
         //Set the adapater for the recycler view
         mTaskRecyclerViewAdapter = new TaskRecyclerViewAdapter(mTaskLog.getmTaskList());
         mTaskRecyclerView.setAdapter(mTaskRecyclerViewAdapter);
-
         //Btn used to add the fragment_task_create to the first page in the view pager
         mBtnAddTaks = view.findViewById(R.id.BtnAddTask);
         mBtnAddTaks.setOnClickListener(view1 -> {

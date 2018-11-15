@@ -1,120 +1,139 @@
 package com.example.a1738253.tp2_tasksapp.Fragment;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
-import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a1738253.tp2_tasksapp.Model.Task;
+import com.example.a1738253.tp2_tasksapp.Model.TaskLog;
 import com.example.a1738253.tp2_tasksapp.R;
+
+import java.util.Calendar;
+
+import static com.example.a1738253.tp2_tasksapp.Utils.Validation.Entre;
 
 public class TaskCreateFragment extends Fragment {
 
-    private  static  final String ARG_TASK_ID = "task_id";
-    private String[] elements = new String[]{"École", "Travail", "Personnel", "Autre"};
-    private  static final String DIALOG_DATE = "DialogTag";
-    private static final int REQUEST_DATE = 0;
-    //    private ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.fragment_task_create, elements);  Cause un bug quand on essaie douvrir lactivity
-    private Task mTask;
-    private EditText mTitre;
-    private EditText mDescription;
-    private TextView mTypeTV;
-    private Spinner mType;
-    private SeekBar mStatut;
-    private RadioGroup mNotif;
-    private Button mDateButton;
-    private Switch mArchive;
+    /**Properties for the class**/
+    private TextView TitleInput;
+    private TextView DescriptionInput;
+    private Spinner TypeInput;
+    private RadioGroup NotificationInput;
+    private ImageButton CloseBtn;
+    private Button AddBtn;
+    private DatePickerDialog DatePicker;
+    private Button OpenDatePickerBtn;
 
-    private ImageButton mCloseBtn;
-    private FragmentManager mFragManager;
+    private Calendar mDate;
+    private TaskLog mTaskLog;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_task_create, container, false);
 
-//        Intent intent = getIntent();
+        mDate = Calendar.getInstance();
 
-        mFragManager = getFragmentManager();
+        //Click listener for the datepicker
+        OpenDatePickerBtn = view.findViewById(R.id.task_create_dateInput);
+        OpenDatePickerBtn.setOnClickListener(view1 -> DatePicker.show());
 
-        mCloseBtn = view.findViewById(R.id.task_create_closeBtn);
-        mCloseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction trans = getFragmentManager().beginTransaction();
-                trans.replace(R.id.frame_home, new TaskListFragment());
-                trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
-                trans.addToBackStack(null);
-                trans.commit();
-            }
+        DatePicker = new DatePickerDialog(getContext(), (datePicker, i, i1, i2) -> {
+            mDate.set(i,i1,i2);
+            OpenDatePickerBtn.setText(mDate.get(Calendar.YEAR)+"-"+mDate.get(Calendar.MONTH)+"-"+mDate.get(Calendar.DAY_OF_MONTH));
+        }, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+
+
+
+        //Click Listener for the close button
+        CloseBtn = view.findViewById(R.id.task_create_closeBtn);
+        CloseBtn.setOnClickListener(view1 -> {
+            CloseForm();
+            FragmentTransaction trans = getFragmentManager().beginTransaction();
+            trans.replace(R.id.frame_home, new TaskListFragment());
+            trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+            trans.addToBackStack(null);
+            trans.commit();
         });
 
-        mTitre = (EditText) view.findViewById(R.id.task_create_titleInput);
-        mTitre.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        //Click listener for the save button
+        AddBtn = view.findViewById(R.id.task_create_addbtn);
+        AddBtn.setOnClickListener(view12 -> SubmitForm());
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-//                mTask.setTitre(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-        mDescription = (EditText) view.findViewById(R.id.task_create_descInput);
-        mDescription.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
-//                mTask.setDescription(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-//        mTypeTV = (TextView) findViewById(R.id.text_view);
-        mType = (Spinner) view.findViewById(R.id.task_create_categorieInput);
-        mType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
-//                mTypeTV.setText("Spinner selected : " + parent.getItemAtPosition(i).toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
+        TitleInput = view.findViewById(R.id.task_create_titleInput);
+        DescriptionInput = view.findViewById(R.id.task_create_descInput);
+        TypeInput = view.findViewById(R.id.task_create_categorieInput);
+        NotificationInput = view.findViewById(R.id.task_create_radioGroup);
 
         return view;
+    }
+
+    /** Method called to save the information inside the taskLog
+     */
+    public void SubmitForm()
+    {
+        String title = TitleInput.getText().toString();
+        String description = DescriptionInput.getText().toString();
+        Task.Type type = Task.Type.valueOf(TypeInput.getSelectedItemPosition());
+        boolean archive = false;
+        Task.Statut statut = Task.Statut.NonComplété;
+        Task.Notification notification;
+        switch(NotificationInput.getCheckedRadioButtonId()){
+            case R.id.task_detail_notifInput1: notification = Task.Notification.LeJour; break;
+            case R.id.task_detail_notifInput2: notification = Task.Notification.JourAvant; break;
+            case R.id.task_detail_notifInput3: notification = Task.Notification.SemaineAvant; break;
+            default: notification = Task.Notification.Aucune; break;
+        }
+
+        boolean estOk = true;
+        String erreurMessage = "";
+        Calendar today = Calendar.getInstance();
+
+        if(!Entre(title, 40,3)){
+            erreurMessage = "Le titre doit être entre 3 et 40";
+            estOk = false;
+        }
+        if(!Entre(description,150,10)){
+            erreurMessage = "La description doit être entre 10 et 150";
+            estOk = false;
+        }
+        if(!mDate.after(today) && mDate.get(Calendar.DAY_OF_MONTH) != today.get(Calendar.DAY_OF_MONTH)){
+            erreurMessage = "La date ne doit pas être antérieur";
+            estOk = false;
+        }
+        if(!(title.charAt(0) == Character.toUpperCase(title.charAt(0)))){
+            erreurMessage = "La première lettre du tire doit être majuscule";
+            estOk = false;
+        }
+
+        if(estOk){
+            mTaskLog = TaskLog.GetInstance();
+            Task newTask = new Task(title, description, type,mDate,statut,archive,notification);
+            if(mTaskLog.AddTask(newTask)){
+                CloseForm();
+                Toast.makeText(getContext(), "Tâche ajoutée", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(getContext(), erreurMessage, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void CloseForm()
+    {
+        FragmentTransaction trans = getFragmentManager().beginTransaction();
+        trans.replace(R.id.frame_home, new TaskListFragment());
+        trans.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+        trans.addToBackStack(null);
+        trans.commit();
     }
 }

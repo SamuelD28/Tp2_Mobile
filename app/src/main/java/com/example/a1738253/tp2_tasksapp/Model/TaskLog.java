@@ -34,6 +34,11 @@ public class TaskLog {
         return mTaskList;
     }
 
+    /** Method used to update the a given task id inside the task list with a new task
+     * @param oldTaskID Id of the task to update
+     * @param newTask New task content to overide the old task
+     * @return Booolean value for the success of the operation
+     */
     public boolean UpdateTask(UUID oldTaskID, Task newTask)
     {
         //Lamda expression to retrieve the old task from the list
@@ -44,6 +49,28 @@ public class TaskLog {
 
         oldTask.UpdateTask(newTask);
         return true;
+    }
+
+    /** Method that deletes a task inside the task list based on the id given
+     * @param id Id of the the task to delete
+     * @return Boolean value indicating the success of the operation
+     */
+    public boolean DeleteTask(UUID id){
+        Task taskToDelete = mTaskList.stream().filter(t -> t.getId() == id).findFirst().get();
+
+        if(taskToDelete == null)
+            return false;
+
+        mTaskList.remove(mTaskList.indexOf(taskToDelete));
+        return true;
+    }
+
+    /** Method to add a new task inside the task list
+     * @param task Task to add
+     * @return Boolean value indicating if the operation was a success
+     */
+    public boolean AddTask(Task task){
+        return mTaskList.add(task);
     }
 
     /** Dataseed method used to intialise the ArrayList with base data

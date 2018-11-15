@@ -90,12 +90,12 @@
                     android:background="@drawable/bg_textinput"
                     android:ems="10"
                     android:fontFamily="@font/raleway_thin"
+                    android:hint="@string/task_tittle_placeholder"
                     android:inputType="textPersonName"
                     android:paddingLeft="4dp"
                     android:paddingTop="8dp"
                     android:paddingRight="4dp"
                     android:paddingBottom="8dp"
-                    android:text="@string/task_tittle_placeholder"
                     android:textColor="@color/GreyDark"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -122,13 +122,13 @@
                     android:background="@drawable/bg_textarea"
                     android:fontFamily="@font/raleway_thin"
                     android:gravity="top"
+                    android:hint="@string/task_desc_placeholder"
                     android:inputType="textMultiLine"
                     android:paddingLeft="4dp"
                     android:paddingTop="8dp"
                     android:paddingRight="4dp"
                     android:paddingBottom="8dp"
                     android:singleLine="false"
-                    android:text="@string/task_desc_placeholder"
                     android:textColor="@color/GreyDark"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -212,6 +212,7 @@
                     android:text="@string/task_notif_label" />
 
                 <RadioGroup
+                    android:id="@+id/task_create_radioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
